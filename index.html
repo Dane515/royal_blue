@@ -34,285 +34,346 @@
         </div>
     </nav>
 
-    <!-- 主体内容容器：在手机端按你的特定顺序垂直排列，在电脑端自动适配 -->
-    <div class="max-w-[1400px] mx-auto p-4 md:p-8 w-full flex-1 flex flex-col space-y-12">
+    <!-- 主体内容容器：左侧主内容 + 右侧足球侧边栏 -->
+    <div class="max-w-[1600px] mx-auto p-4 md:p-8 w-full flex-1 grid grid-cols-1 lg:grid-cols-4 gap-6 md:gap-8">
         
-        <!-- 【位置 1】Hero Banner -->
-        <div class="relative bg-gradient-to-r from-[#141414] via-[#221b0a] to-[#141414] rounded-2xl p-6 md:p-12 border border-gold overflow-hidden shadow-2xl">
-            <div class="relative z-10 max-w-xl space-y-4">
-                <span class="text-xs uppercase tracking-widest text-gold font-semibold">👑 Royal Blue Club Premium</span>
-                <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">海量热门短剧<br><span class="text-gold">⚡ 每日更新</span></h2>
-                <p class="text-gray-400 text-xs md:text-sm">新用户注册即送免费体验额度，尊享极致视听盛宴。</p>
-                <div class="pt-2 flex flex-wrap gap-4">
-                    <button class="bg-gold text-black font-bold px-8 py-3 rounded-xl hover:bg-white transition text-sm">立即观看</button>
-                    <a href="#" class="bg-[#229ED9] text-white font-bold px-6 py-3 rounded-xl hover:opacity-90 transition flex items-center space-x-2 text-sm">
-                        <span>加入 Telegram</span>
-                    </a>
+        <!-- 左侧核心内容 (占 3 列) -->
+        <div class="lg:col-span-3 space-y-12">
+            
+            <!-- 【位置 1】Hero Banner -->
+            <div class="relative bg-gradient-to-r from-[#141414] via-[#221b0a] to-[#141414] rounded-2xl p-6 md:p-12 border border-gold overflow-hidden shadow-2xl">
+                <div class="relative z-10 max-w-xl space-y-4">
+                    <span class="text-xs uppercase tracking-widest text-gold font-semibold">👑 Royal Blue Club Premium</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">海量热门短剧<br><span class="text-gold">⚡ 每日更新</span></h2>
+                    <p class="text-gray-400 text-xs md:text-sm">新用户注册即送免费体验额度，尊享极致视听盛宴。</p>
+                    <div class="pt-2 flex flex-wrap gap-4">
+                        <button class="bg-gold text-black font-bold px-8 py-3 rounded-xl hover:bg-white transition text-sm">立即观看</button>
+                        <a href="#" class="bg-[#229ED9] text-white font-bold px-6 py-3 rounded-xl hover:opacity-90 transition flex items-center space-x-2 text-sm">
+                            <span>加入 Telegram</span>
+                        </a>
+                    </div>
                 </div>
+                <div class="absolute right-0 bottom-0 opacity-5 text-[8rem] md:text-[12rem] font-bold select-none text-gold pointer-events-none transform translate-x-10 translate-y-10">DIAMOND</div>
             </div>
-            <div class="absolute right-0 bottom-0 opacity-5 text-[8rem] md:text-[12rem] font-bold select-none text-gold pointer-events-none transform translate-x-10 translate-y-10">DIAMOND</div>
+
+            <!-- 【位置 2】新人福利专区 (紧跟 Banner，强转化) -->
+            <section class="bg-gradient-to-r from-[#1a150b] to-[#111] p-6 rounded-2xl border border-gold-bright/30 shadow-xl">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="space-y-4 flex-1">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-xl">🎁</span>
+                            <h3 class="text-lg font-bold text-white">新玩家专属奢华福利</h3>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="bg-[#0a0a0a]/60 p-3 rounded-xl border border-gold flex items-center space-x-3">
+                                <span class="text-2xl">👑</span>
+                                <div>
+                                    <p class="text-white text-xs font-bold">注册即送</p>
+                                    <p class="text-gold text-xs">3天尊享VIP会员</p>
+                                </div>
+                            </div>
+                            <div class="bg-[#0a0a0a]/60 p-3 rounded-xl border border-gold flex items-center space-x-3">
+                                <span class="text-2xl">📈</span>
+                                <div>
+                                    <p class="text-white text-xs font-bold">每日签到</p>
+                                    <p class="text-gold text-xs">免费领海量积分</p>
+                                </div>
+                            </div>
+                            <div class="bg-[#0a0a0a]/60 p-3 rounded-xl border border-gold flex items-center space-x-3">
+                                <span class="text-2xl">🤝</span>
+                                <div>
+                                    <p class="text-white text-xs font-bold">邀请好友</p>
+                                    <p class="text-gold text-xs">直接得免费会员</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <button class="w-full md:w-auto bg-gold text-black font-black px-8 py-4 rounded-xl hover:bg-white transition text-sm tracking-wider shadow-lg shadow-yellow-600/20">立即领取福利</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 【位置 3】今日热门 -->
+            <section class="space-y-4">
+                <h3 class="text-lg font-bold text-white border-b border-gold pb-2 flex items-center gap-2">
+                    <span>🔥 今日热门排行榜</span>
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <!-- 剧集卡片组合 -->
+                    <div class="group cursor-pointer bg-[#121212] p-2 rounded-xl border border-gold hover:border-gold-bright transition">
+                        <div class="aspect-[3/4] bg-[#1f1f1f] rounded-lg mb-2 relative flex items-center justify-center text-gray-600">
+                            <span class="text-xs">海报封面</span>
+                            <span class="absolute top-2 left-2 bg-black/80 text-gold text-[10px] px-1.5 py-0.5 rounded font-bold">★ 9.8</span>
+                        </div>
+                        <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">地府客服中心</h4>
+                        <div class="flex justify-between items-center mt-1 text-[10px] text-gray-500"><span>80集全</span><span>42.1万热度</span></div>
+                    </div>
+                    <div class="group cursor-pointer bg-[#121212] p-2 rounded-xl border border-gold hover:border-gold-bright transition">
+                        <div class="aspect-[3/4] bg-[#1f1f1f] rounded-lg mb-2 relative flex items-center justify-center text-gray-600">
+                            <span class="text-xs">海报封面</span>
+                            <span class="absolute top-2 left-2 bg-black/80 text-gold text-[10px] px-1.5 py-0.5 rounded font-bold">★ 9.5</span>
+                        </div>
+                        <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">家门口过招</h4>
+                        <div class="flex justify-between items-center mt-1 text-[10px] text-gray-500"><span>65集全</span><span>31.5万热度</span></div>
+                    </div>
+                    <div class="group cursor-pointer bg-[#121212] p-2 rounded-xl border border-gold hover:border-gold-bright transition">
+                        <div class="aspect-[3/4] bg-[#1f1f1f] rounded-lg mb-2 relative flex items-center justify-center text-gray-600">
+                            <span class="text-xs">海报封面</span>
+                            <span class="absolute top-2 left-2 bg-black/80 text-gold text-[10px] px-1.5 py-0.5 rounded font-bold">★ 9.2</span>
+                        </div>
+                        <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">总督白来</h4>
+                        <div class="flex justify-between items-center mt-1 text-[10px] text-gray-500"><span>100集全</span><span>55.2万热度</span></div>
+                    </div>
+                    <div class="group cursor-pointer bg-[#121212] p-2 rounded-xl border border-gold hover:border-gold-bright transition">
+                        <div class="aspect-[3/4] bg-[#1f1f1f] rounded-lg mb-2 relative flex items-center justify-center text-gray-600">
+                            <span class="text-xs">海报封面</span>
+                            <span class="absolute top-2 left-2 bg-black/80 text-gold text-[10px] px-1.5 py-0.5 rounded font-bold">★ 9.6</span>
+                        </div>
+                        <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">豪门逆袭</h4>
+                        <div class="flex justify-between items-center mt-1 text-[10px] text-gray-500"><span>92集全</span><span>89.4万热度</span></div>
+                    </div>
+                    <div class="group cursor-pointer bg-[#121212] p-2 rounded-xl border border-gold hover:border-gold-bright transition">
+                        <div class="aspect-[3/4] bg-[#1f1f1f] rounded-lg mb-2 relative flex items-center justify-center text-gray-600">
+                            <span class="text-xs">海报封面</span>
+                            <span class="absolute top-2 left-2 bg-black/80 text-gold text-[10px] px-1.5 py-0.5 rounded font-bold">★ 9.0</span>
+                        </div>
+                        <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">都市风云</h4>
+                        <div class="flex justify-between items-center mt-1 text-[10px] text-gray-500"><span>75集全</span><span>24.8万热度</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 【位置 4】分类专区 -->
+            <section class="space-y-4">
+                <h3 class="text-lg font-bold text-white border-b border-gold pb-2">🎬 分类专区</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-[#121212] p-4 rounded-xl border border-gold">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-gold font-bold text-sm border-l-2 border-gold-bright pl-2">逆袭 / 都市 / 古装</span>
+                            <a href="#" class="text-[11px] text-gray-500 hover:text-gold">查看更多 →</a>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs text-gray-400">
+                            <div class="bg-[#191919] p-2 rounded">逆袭神剧 A</div>
+                            <div class="bg-[#191919] p-2 rounded">都市风云 B</div>
+                            <div class="bg-[#191919] p-2 rounded">古装权谋 C</div>
+                            <div class="bg-[#191919] p-2 rounded">精选短剧 D</div>
+                        </div>
+                    </div>
+                    <div class="bg-[#121212] p-4 rounded-xl border border-gold">
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-gold font-bold text-sm border-l-2 border-gold-bright pl-2">喜剧 / 爱情 / 悬疑</span>
+                            <a href="#" class="text-[11px] text-gray-500 hover:text-gold">查看更多 →</a>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs text-gray-400">
+                            <div class="bg-[#191919] p-2 rounded">爆笑喜剧 E</div>
+                            <div class="bg-[#191919] p-2 rounded">甜宠爱情 F</div>
+                            <div class="bg-[#191919] p-2 rounded">悬疑反转 G</div>
+                            <div class="bg-[#191919] p-2 rounded">心跳剧集 H</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 【位置 5】最新更新 -->
+            <section class="space-y-4">
+                <h3 class="text-lg font-bold text-white border-b border-gold pb-2">🆕 最新更新</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-[#121212] p-4 rounded-xl border border-gold">
+                        <span class="text-gold text-[10px] font-bold block mb-1">🆕 今日更新</span>
+                        <p class="text-white text-xs font-bold">《地府客服中心》第 71-80 集完结</p>
+                    </div>
+                    <div class="bg-[#121212] p-4 rounded-xl border border-gold">
+                        <span class="text-gray-500 text-[10px] font-bold block mb-1">🆕 昨日更新</span>
+                        <p class="text-white text-xs font-bold">《总督白来》第 50-60 集抢先看</p>
+                    </div>
+                    <div class="bg-[#121212] p-4 rounded-xl border border-gold">
+                        <span class="text-gold text-[10px] font-bold block mb-1">🔥 本周热门</span>
+                        <p class="text-white text-xs font-bold">《豪门逆袭》热度突破 100W+</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 【位置 6】VIP 会员中心 -->
+            <section class="space-y-6 bg-gradient-to-b from-transparent to-[#161309]/20 p-6 rounded-2xl border border-gold/40">
+                <div class="text-center">
+                    <h3 class="text-xl font-bold text-gold">👑 VIP会员中心</h3>
+                    <p class="text-gray-500 text-xs mt-1">尊享俱乐部，解锁全部高清特权</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- 会员 1 -->
+                    <div class="bg-[#121212] border border-gold rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-white font-bold text-sm">VIP会员</h4>
+                            <div class="text-xl font-black text-gold my-2">RM 29 <span class="text-xs font-normal text-gray-500">/ 月</span></div>
+                            <ul class="text-[11px] text-gray-400 space-y-1.5 border-t border-gold/40 pt-2">
+                                <li>✔ 无广告打扰</li>
+                                <li>✔ 高清画质体验</li>
+                                <li>✔ 独家剧集抢先看</li>
+                                <li>✔ 支持离线下载</li>
+                            </ul>
+                        </div>
+                        <button class="w-full mt-4 border border-gold text-gold py-1.5 rounded text-xs font-bold hover:bg-gold hover:text-black transition">立即开通</button>
+                    </div>
+                    <!-- 会员 2 -->
+                    <div class="bg-[#1c180d] border-2 border-gold-bright rounded-xl p-5 flex flex-col justify-between relative shadow-lg">
+                        <span class="absolute top-0 right-0 bg-gold text-black text-[9px] px-2 py-0.5 font-bold rounded-bl-lg">推荐</span>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">超级VIP</h4>
+                            <div class="text-xl font-black text-gold my-2">RM 69 <span class="text-xs font-normal text-gray-500">/ 季</span></div>
+                            <ul class="text-[11px] text-gray-300 space-y-1.5 border-t border-gold-bright/30 pt-2">
+                                <li>✔ 4K 超清顶配画质</li>
+                                <li>✔ 专属隐藏剧集频道</li>
+                                <li>✔ 限定互动内容解锁</li>
+                                <li>✔ 1对1 优先专属客服</li>
+                            </ul>
+                        </div>
+                        <button class="w-full mt-4 bg-gold text-black py-1.5 rounded text-xs font-bold hover:bg-white transition">立即开通</button>
+                    </div>
+                    <!-- 会员 3 -->
+                    <div class="bg-[#121212] border border-gold rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-white font-bold text-sm">年度VIP</h4>
+                                <span class="bg-red-600 text-white text-[9px] px-1 rounded font-bold">🔥 最划算</span>
+                            </div>
+                            <div class="text-xl font-black text-gold my-2">RM 199 <span class="text-xs font-normal text-gray-500">/ 年</span></div>
+                            <p class="text-[10px] text-gold bg-gold/10 p-1.5 rounded border border-gold/20 mb-2">平均每天仅 <strong>RM 0.55</strong></p>
+                            <ul class="text-[11px] text-gray-400 space-y-1.5 border-t border-gold/40 pt-2">
+                                <li>✔ 全年不限次任意看</li>
+                                <li>✔ 尊享高价值社区活动</li>
+                                <li>✔ 账号支持多端多设备</li>
+                            </ul>
+                        </div>
+                        <button class="w-full mt-4 border border-gold text-gold py-1.5 rounded text-xs font-bold hover:bg-gold hover:text-black transition">立即开通</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 【位置 7】社区中心 -->
+            <section class="space-y-4">
+                <h3 class="text-lg font-bold text-white border-b border-gold pb-2">💬 社区中心</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <!-- 话题分类列表 -->
+                    <div class="md:col-span-1 bg-[#121212] p-4 rounded-xl border border-gold space-y-2 flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible gap-2 md:gap-0">
+                        <span class="text-gold text-xs font-bold block whitespace-nowrap">🔥 热门话题标签</span>
+                        <a href="#" class="text-xs text-gray-400 hover:text-gold block whitespace-nowrap">#短剧推荐</a>
+                        <a href="#" class="text-xs text-gray-400 hover:text-gold block whitespace-nowrap">#每日更新</a>
+                        <a href="#" class="text-xs text-gray-400 hover:text-gold block whitespace-nowrap">#会员福利</a>
+                        <a href="#" class="text-xs text-gray-400 hover:text-gold block whitespace-nowrap">#观后感</a>
+                    </div>
+                    <!-- 社区内容示范 -->
+                    <div class="md:col-span-3 bg-[#121212] p-4 rounded-xl border border-gold space-y-3">
+                        <div class="border-b border-gray-800 pb-3">
+                            <div class="flex justify-between items-center text-xs mb-1">
+                                <span class="text-gold font-bold">影迷小王</span>
+                                <span class="text-gray-500">10分钟前</span>
+                            </div>
+                            <p class="text-white text-xs leading-relaxed">刚刚熬夜把《豪门逆袭》看完了，大结局绝了！推荐大家直接冲，完全不拖沓！</p>
+                            <!-- 互动功能按钮 -->
+                            <div class="flex space-x-6 mt-2 text-[11px] text-gray-500">
+                                <button class="hover:text-gold flex items-center gap-1">👍 <span>245</span></button>
+                                <button class="hover:text-gold flex items-center gap-1">💬 <span>48</span></button>
+                                <button class="hover:text-gold flex items-center gap-1">⭐ <span>12</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 【位置 8】APP 下载与服务专区 -->
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 下载 -->
+                <div class="bg-[#121212] p-5 rounded-xl border border-gold space-y-3">
+                    <h4 class="text-white font-bold text-sm">📲 APP下载专区</h4>
+                    <div class="space-y-2 text-xs">
+                        <a href="#" class="block bg-gold text-black font-bold p-2 rounded text-center hover:opacity-90 transition">Android APK 安全下载</a>
+                        <a href="#" class="block bg-[#229ED9] text-white p-2 rounded text-center hover:opacity-90 transition">Telegram 官方通知频道</a>
+                    </div>
+                </div>
+                <!-- 教程与客服 -->
+                <div class="bg-[#121212] p-5 rounded-xl border border-gold space-y-3">
+                    <h4 class="text-white font-bold text-sm">ℹ 帮助与支持</h4>
+                    <ul class="text-xs text-gray-400 space-y-2">
+                        <li><a href="#" class="hover:text-gold">📖 平台简易观看教程</a></li>
+                        <li><a href="#" class="hover:text-gold">👩‍💻 24小时在线客服支持</a></li>
+                    </ul>
+                </div>
+                <!-- 技术与基础支撑合作 (隐藏具体品牌) -->
+                <div class="bg-[#121212] p-5 rounded-xl border border-gold space-y-2">
+                    <h4 class="text-gray-400 font-bold text-xs uppercase tracking-wider">🔒 基础建设与技术保障</h4>
+                    <div class="grid grid-cols-2 gap-2 text-[10px] text-gray-500">
+                        <div class="bg-[#181818] p-1.5 rounded">⚡ 全球 CDN 加速</div>
+                        <div class="bg-[#181818] p-1.5 rounded">🖥 高防云服务器</div>
+                        <div class="bg-[#181818] p-1.5 rounded">🛡 银行级安全防护</div>
+                        <div class="bg-[#181818] p-1.5 rounded">💳 聚合聚合支付服务</div>
+                    </div>
+                </div>
+            </section>
+
         </div>
 
-        <!-- 【位置 2】新人福利专区 (紧跟 Banner，强转化) -->
-        <section class="bg-gradient-to-r from-[#1a150b] to-[#111] p-6 rounded-2xl border border-gold-bright/30 shadow-xl">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div class="space-y-4 flex-1">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-xl">🎁</span>
-                        <h3 class="text-lg font-bold text-white">新玩家专属奢华福利</h3>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        <div class="bg-[#0a0a0a]/60 p-3 rounded-xl border border-gold flex items-center space-x-3">
-                            <span class="text-2xl">👑</span>
-                            <div>
-                                <p class="text-white text-xs font-bold">注册即送</p>
-                                <p class="text-gold text-xs">3天尊享VIP会员</p>
-                            </div>
+        <!-- 右侧侧边栏：世界杯比分 + 足球贴士 (占 1 列，仅在 lg 及以上显示) -->
+        <div class="hidden lg:flex lg:flex-col space-y-6">
+            <!-- 【位置 9】世界杯赛事看板 (实时数据) -->
+            <div class="bg-[#121212] border border-gold rounded-xl p-4 sticky top-24">
+                <div class="flex items-center justify-between border-b border-gold pb-2 mb-3">
+                    <h4 class="text-white font-bold text-sm flex items-center gap-1">⚽ 2026 世界杯赛况</h4>
+                    <span class="bg-red-600 animate-pulse text-white text-[9px] px-1.5 py-0.5 rounded-full font-bold">LIVE</span>
+                </div>
+                <!-- 实时赛事模拟 -->
+                <div class="space-y-3">
+                    <div class="bg-[#1a1a1a] p-3 rounded-lg border border-gold/60 text-xs">
+                        <div class="text-gray-400 mb-1 flex justify-between">
+                            <span>小组赛 A 组 · 进行中 62'</span>
+                            <span class="text-gold font-bold">实时比分</span>
                         </div>
-                        <div class="bg-[#0a0a0a]/60 p-3 rounded-xl border border-gold flex items-center space-x-3">
-                            <span class="text-2xl">📈</span>
-                            <div>
-                                <p class="text-white text-xs font-bold">每日签到</p>
-                                <p class="text-gold text-xs">免费领海量积分</p>
-                            </div>
-                        </div>
-                        <div class="bg-[#0a0a0a]/60 p-3 rounded-xl border border-gold flex items-center space-x-3">
-                            <span class="text-2xl">🤝</span>
-                            <div>
-                                <p class="text-white text-xs font-bold">邀请好友</p>
-                                <p class="text-gold text-xs">直接得免费会员</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center">
-                    <button class="w-full md:w-auto bg-gold text-black font-black px-8 py-4 rounded-xl hover:bg-white transition text-sm tracking-wider shadow-lg shadow-yellow-600/20">立即领取福利</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 【位置 3】今日热门 -->
-        <section class="space-y-4">
-            <h3 class="text-lg font-bold text-white border-b border-gold pb-2 flex items-center gap-2">
-                <span>🔥 今日热门排行榜</span>
-            </h3>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-                <!-- 剧集卡片组合 -->
-                <div class="group cursor-pointer bg-[#121212] p-2 rounded-xl border border-gold hover:border-gold-bright transition">
-                    <div class="aspect-[3/4] bg-[#1f1f1f] rounded-lg mb-2 relative flex items-center justify-center text-gray-600">
-                        <span class="text-xs">海报封面</span>
-                        <span class="absolute top-2 left-2 bg-black/80 text-gold text-[10px] px-1.5 py-0.5 rounded font-bold">★ 9.8</span>
-                    </div>
-                    <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">地府客服中心</h4>
-                    <div class="flex justify-between items-center mt-1 text-[10px] text-gray-500"><span>80集全</span><span>42.1万热度</span></div>
-                </div>
-                <div class="group cursor-pointer bg-[#121212] p-2 rounded-xl border border-gold hover:border-gold-bright transition">
-                    <div class="aspect-[3/4] bg-[#1f1f1f] rounded-lg mb-2 relative flex items-center justify-center text-gray-600">
-                        <span class="text-xs">海报封面</span>
-                        <span class="absolute top-2 left-2 bg-black/80 text-gold text-[10px] px-1.5 py-0.5 rounded font-bold">★ 9.5</span>
-                    </div>
-                    <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">家门口过招</h4>
-                    <div class="flex justify-between items-center mt-1 text-[10px] text-gray-500"><span>65集全</span><span>31.5万热度</span></div>
-                </div>
-                <div class="group cursor-pointer bg-[#121212] p-2 rounded-xl border border-gold hover:border-gold-bright transition">
-                    <div class="aspect-[3/4] bg-[#1f1f1f] rounded-lg mb-2 relative flex items-center justify-center text-gray-600">
-                        <span class="text-xs">海报封面</span>
-                        <span class="absolute top-2 left-2 bg-black/80 text-gold text-[10px] px-1.5 py-0.5 rounded font-bold">★ 9.2</span>
-                    </div>
-                    <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">总督白来</h4>
-                    <div class="flex justify-between items-center mt-1 text-[10px] text-gray-500"><span>100集全</span><span>55.2万热度</span></div>
-                </div>
-                <div class="group cursor-pointer bg-[#121212] p-2 rounded-xl border border-gold hover:border-gold-bright transition">
-                    <div class="aspect-[3/4] bg-[#1f1f1f] rounded-lg mb-2 relative flex items-center justify-center text-gray-600">
-                        <span class="text-xs">海报封面</span>
-                        <span class="absolute top-2 left-2 bg-black/80 text-gold text-[10px] px-1.5 py-0.5 rounded font-bold">★ 9.6</span>
-                    </div>
-                    <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">豪门逆袭</h4>
-                    <div class="flex justify-between items-center mt-1 text-[10px] text-gray-500"><span>92集全</span><span>89.4万热度</span></div>
-                </div>
-                <div class="group cursor-pointer bg-[#121212] p-2 rounded-xl border border-gold hover:border-gold-bright transition">
-                    <div class="aspect-[3/4] bg-[#1f1f1f] rounded-lg mb-2 relative flex items-center justify-center text-gray-600">
-                        <span class="text-xs">海报封面</span>
-                        <span class="absolute top-2 left-2 bg-black/80 text-gold text-[10px] px-1.5 py-0.5 rounded font-bold">★ 9.0</span>
-                    </div>
-                    <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">都市风云</h4>
-                    <div class="flex justify-between items-center mt-1 text-[10px] text-gray-500"><span>75集全</span><span>24.8万热度</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 【位置 4】分类专区 -->
-        <section class="space-y-4">
-            <h3 class="text-lg font-bold text-white border-b border-gold pb-2">🎬 分类专区</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-[#121212] p-4 rounded-xl border border-gold">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-gold font-bold text-sm border-l-2 border-gold-bright pl-2">逆袭 / 都市 / 古装</span>
-                        <a href="#" class="text-[11px] text-gray-500 hover:text-gold">查看更多 →</a>
-                    </div>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs text-gray-400">
-                        <div class="bg-[#191919] p-2 rounded">逆袭神剧 A</div>
-                        <div class="bg-[#191919] p-2 rounded">都市风云 B</div>
-                        <div class="bg-[#191919] p-2 rounded">古装权谋 C</div>
-                        <div class="bg-[#191919] p-2 rounded">精选短剧 D</div>
-                    </div>
-                </div>
-                <div class="bg-[#121212] p-4 rounded-xl border border-gold">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-gold font-bold text-sm border-l-2 border-gold-bright pl-2">喜剧 / 爱情 / 悬疑</span>
-                        <a href="#" class="text-[11px] text-gray-500 hover:text-gold">查看更多 →</a>
-                    </div>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs text-gray-400">
-                        <div class="bg-[#191919] p-2 rounded">爆笑喜剧 E</div>
-                        <div class="bg-[#191919] p-2 rounded">甜宠爱情 F</div>
-                        <div class="bg-[#191919] p-2 rounded">悬疑反转 G</div>
-                        <div class="bg-[#191919] p-2 rounded">心跳剧集 H</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 【位置 5】最新更新 -->
-        <section class="space-y-4">
-            <h3 class="text-lg font-bold text-white border-b border-gold pb-2">🆕 最新更新</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-[#121212] p-4 rounded-xl border border-gold">
-                    <span class="text-gold text-[10px] font-bold block mb-1">🆕 今日更新</span>
-                    <p class="text-white text-xs font-bold">《地府客服中心》第 71-80 集完结</p>
-                </div>
-                <div class="bg-[#121212] p-4 rounded-xl border border-gold">
-                    <span class="text-gray-500 text-[10px] font-bold block mb-1">🆕 昨日更新</span>
-                    <p class="text-white text-xs font-bold">《总督白来》第 50-60 集抢先看</p>
-                </div>
-                <div class="bg-[#121212] p-4 rounded-xl border border-gold">
-                    <span class="text-gold text-[10px] font-bold block mb-1">🔥 本周热门</span>
-                    <p class="text-white text-xs font-bold">《豪门逆袭》热度突破 100W+</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 【位置 6】VIP 会员中心 -->
-        <section class="space-y-6 bg-gradient-to-b from-transparent to-[#161309]/20 p-6 rounded-2xl border border-gold/40">
-            <div class="text-center">
-                <h3 class="text-xl font-bold text-gold">👑 VIP会员中心</h3>
-                <p class="text-gray-500 text-xs mt-1">尊享俱乐部，解锁全部高清特权</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- 会员 1 -->
-                <div class="bg-[#121212] border border-gold rounded-xl p-5 flex flex-col justify-between">
-                    <div>
-                        <h4 class="text-white font-bold text-sm">VIP会员</h4>
-                        <div class="text-xl font-black text-gold my-2">RM 29 <span class="text-xs font-normal text-gray-500">/ 月</span></div>
-                        <ul class="text-[11px] text-gray-400 space-y-1.5 border-t border-gold/40 pt-2">
-                            <li>✔ 无广告打扰</li>
-                            <li>✔ 高清画质体验</li>
-                            <li>✔ 独家剧集抢先看</li>
-                            <li>✔ 支持离线下载</li>
-                        </ul>
-                    </div>
-                    <button class="w-full mt-4 border border-gold text-gold py-1.5 rounded text-xs font-bold hover:bg-gold hover:text-black transition">立即开通</button>
-                </div>
-                <!-- 会员 2 -->
-                <div class="bg-[#1c180d] border-2 border-gold-bright rounded-xl p-5 flex flex-col justify-between relative shadow-lg">
-                    <span class="absolute top-0 right-0 bg-gold text-black text-[9px] px-2 py-0.5 font-bold rounded-bl-lg">推荐</span>
-                    <div>
-                        <h4 class="text-white font-bold text-sm">超级VIP</h4>
-                        <div class="text-xl font-black text-gold my-2">RM 69 <span class="text-xs font-normal text-gray-500">/ 季</span></div>
-                        <ul class="text-[11px] text-gray-300 space-y-1.5 border-t border-gold-bright/30 pt-2">
-                            <li>✔ 4K 超清顶配画质</li>
-                            <li>✔ 专属隐藏剧集频道</li>
-                            <li>✔ 限定互动内容解锁</li>
-                            <li>✔ 1对1 优先专属客服</li>
-                        </ul>
-                    </div>
-                    <button class="w-full mt-4 bg-gold text-black py-1.5 rounded text-xs font-bold hover:bg-white transition">立即开通</button>
-                </div>
-                <!-- 会员 3 -->
-                <div class="bg-[#121212] border border-gold rounded-xl p-5 flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center">
-                            <h4 class="text-white font-bold text-sm">年度VIP</h4>
-                            <span class="bg-red-600 text-white text-[9px] px-1 rounded font-bold">🔥 最划算</span>
-                        </div>
-                        <div class="text-xl font-black text-gold my-2">RM 199 <span class="text-xs font-normal text-gray-500">/ 年</span></div>
-                        <p class="text-[10px] text-gold bg-gold/10 p-1.5 rounded border border-gold/20 mb-2">平均每天仅 <strong>RM 0.55</strong></p>
-                        <ul class="text-[11px] text-gray-400 space-y-1.5 border-t border-gold/40 pt-2">
-                            <li>✔ 全年不限次任意看</li>
-                            <li>✔ 尊享高价值社区活动</li>
-                            <li>✔ 账号支持多端多设备</li>
-                        </ul>
-                    </div>
-                    <button class="w-full mt-4 border border-gold text-gold py-1.5 rounded text-xs font-bold hover:bg-gold hover:text-black transition">立即开通</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- 【位置 7】社区中心 -->
-        <section class="space-y-4">
-            <h3 class="text-lg font-bold text-white border-b border-gold pb-2">💬 社区中心</h3>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <!-- 话题分类列表 -->
-                <div class="md:col-span-1 bg-[#121212] p-4 rounded-xl border border-gold space-y-2 flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible gap-2 md:gap-0">
-                    <span class="text-gold text-xs font-bold block whitespace-nowrap">🔥 热门话题标签</span>
-                    <a href="#" class="text-xs text-gray-400 hover:text-gold block whitespace-nowrap">#短剧推荐</a>
-                    <a href="#" class="text-xs text-gray-400 hover:text-gold block whitespace-nowrap">#每日更新</a>
-                    <a href="#" class="text-xs text-gray-400 hover:text-gold block whitespace-nowrap">#会员福利</a>
-                    <a href="#" class="text-xs text-gray-400 hover:text-gold block whitespace-nowrap">#观后感</a>
-                </div>
-                <!-- 社区内容示范 -->
-                <div class="md:col-span-3 bg-[#121212] p-4 rounded-xl border border-gold space-y-3">
-                    <div class="border-b border-gray-800 pb-3">
-                        <div class="flex justify-between items-center text-xs mb-1">
-                            <span class="text-gold font-bold">影迷小王</span>
-                            <span class="text-gray-500">10分钟前</span>
-                        </div>
-                        <p class="text-white text-xs leading-relaxed">刚刚熬夜把《豪门逆袭》看完了，大结局绝了！推荐大家直接冲，完全不拖沓！</p>
-                        <!-- 互动功能按钮 -->
-                        <div class="flex space-x-6 mt-2 text-[11px] text-gray-500">
-                            <button class="hover:text-gold flex items-center gap-1">👍 <span>245</span></button>
-                            <button class="hover:text-gold flex items-center gap-1">💬 <span>48</span></button>
-                            <button class="hover:text-gold flex items-center gap-1">⭐ <span>12</span></button>
+                        <div class="flex justify-between items-center text-white font-semibold">
+                            <span>🇲🇽 墨西哥</span>
+                            <span class="text-base text-gold font-black">2 - 1</span>
+                            <span>����🇦 南非</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- 【位置 8】APP 下载与服务专区 -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- 下载 -->
-            <div class="bg-[#121212] p-5 rounded-xl border border-gold space-y-3">
-                <h4 class="text-white font-bold text-sm">📲 APP下载专区</h4>
-                <div class="space-y-2 text-xs">
-                    <a href="#" class="block bg-gold text-black font-bold p-2 rounded text-center hover:opacity-90 transition">Android APK 安全下载</a>
-                    <a href="#" class="block bg-[#229ED9] text-white p-2 rounded text-center hover:opacity-90 transition">Telegram 官方通知频道</a>
+            <!-- 【位置 10】足球分析贴士窗 -->
+            <div class="bg-[#121212] border border-gold rounded-xl p-4 space-y-4">
+                <h4 class="text-gold font-bold text-sm border-b border-gold pb-2">💡 专家独家赛事贴士</h4>
+                
+                <!-- 贴士 1：免费公开 -->
+                <div class="bg-[#1a1a1a] p-3 rounded-lg border border-gold/40">
+                    <div class="flex justify-between text-[10px] mb-1">
+                        <span class="text-gray-500">🇲🇽 墨西哥 vs 🇿🇦 南非</span>
+                        <span class="text-green-500 font-bold">免费贴士</span>
+                    </div>
+                    <p class="text-white text-xs leading-relaxed">墨西哥在下半场换上主力前锋，进攻节奏明显加快，建议关注后续进球盘的大球机会。</p>
+                </div>
+
+                <!-- 贴士 2：VIP 付费模糊 -->
+                <div class="bg-[#1a1a1a] p-3 rounded-lg border border-gold relative overflow-hidden group">
+                    <div class="flex justify-between text-[10px] mb-1">
+                        <span class="text-gray-500">🇨🇦 加拿大 vs 🇧🇦 波黑</span>
+                        <span class="text-gold font-bold flex items-center gap-1">👑 VIP专属</span>
+                    </div>
+                    <!-- 模糊内容 -->
+                    <div class="blur-[4px] select-none pointer-events-none text-xs text-gray-400">
+                        根据后台欧洲独家亚洲盘口指数分析，波黑中场主力停赛导致防线受损，本场独家精确比分预测为：2:0...
+                    </div>
+                    <!-- 盖在上面的锁和注册转化按钮 -->
+                    <div class="absolute inset-0 bg-black/70 flex flex-col items-center justify-center p-2 text-center opacity-100 group-hover:bg-black/80 transition-all">
+                        <span class="text-[11px] text-gold font-semibold mb-1">🔒 升级或注册会员解锁预测</span>
+                        <button class="bg-gold text-black text-[10px] font-black px-3 py-1 rounded hover:bg-white transition">立即解锁</button>
+                    </div>
                 </div>
             </div>
-            <!-- 教程与客服 -->
-            <div class="bg-[#121212] p-5 rounded-xl border border-gold space-y-3">
-                <h4 class="text-white font-bold text-sm">ℹ 帮助与支持</h4>
-                <ul class="text-xs text-gray-400 space-y-2">
-                    <li><a href="#" class="hover:text-gold">📖 平台简易观看教程</a></li>
-                    <li><a href="#" class="hover:text-gold">👩‍💻 24小时在线客服支持</a></li>
-                </ul>
-            </div>
-            <!-- 技术与基础支撑合作 (隐藏具体品牌) -->
-            <div class="bg-[#121212] p-5 rounded-xl border border-gold space-y-2">
-                <h4 class="text-gray-400 font-bold text-xs uppercase tracking-wider">🔒 基础建设与技术保障</h4>
-                <div class="grid grid-cols-2 gap-2 text-[10px] text-gray-500">
-                    <div class="bg-[#181818] p-1.5 rounded">⚡ 全球 CDN 加速</div>
-                    <div class="bg-[#181818] p-1.5 rounded">🖥 高防云服务器</div>
-                    <div class="bg-[#181818] p-1.5 rounded">🛡 银行级安全防护</div>
-                    <div class="bg-[#181818] p-1.5 rounded">💳 聚合聚合支付服务</div>
-                </div>
-            </div>
-        </section>
-
+        </div>
+        
     </div>
 
-    <!-- 【位置 9】Footer 底部 -->
+    <!-- 【位置 11】Footer 底部 -->
     <footer class="bg-[#070707] border-t border-gold mt-12">
-        <div class="max-w-[1400px] mx-auto px-4 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-xs text-gray-500">
+        <div class="max-w-[1600px] mx-auto px-4 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-xs text-gray-500">
             <div class="space-y-2">
                 <p class="font-bold text-gray-400">了解我们</p>
                 <a href="#" class="block hover:text-gold">关于我们</a>
