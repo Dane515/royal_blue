@@ -943,9 +943,378 @@
     isPlayStarted = false;
     // 默认高亮第一幕按钮
     document.querySelector('.act-btn[data-act="act1"]').classList.add('active');
-</script>
+    <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Blue Club - 顶级皇家短剧娱乐社区</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 核心高奢蓝金配色 */
+        body { 
+            background: radial-gradient(circle at top, #0c2554 0%, #071A3D 100%); 
+            color: #e2e8f0; 
+            font-family: system-ui, -apple-system, sans-serif; 
+        }
+        .text-gold { color: #D4AF37; }
+        .bg-gold { background-color: #D4AF37; }
+        .border-gold { border-color: rgba(212, 175, 55, 0.15); }
+        .border-gold-bright { border-color: #D4AF37; }
+        
+        /* 玻璃拟态卡片 */
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px); 
+            border: 1px solid rgba(212, 175, 55, 0.15); 
+        }
+        .glass-card:hover { 
+            border: 1px solid rgba(212, 175, 55, 0.4); 
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1); 
+        }
+        /* 剧集按钮基础样式 */
+        .ep-btn { 
+            background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            transition: all 0.2s; 
+        }
+        .ep-btn:hover { border-color: #D4AF37; color: #D4AF37; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative">
+
+    <div id="conversion-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="relative w-full max-w-md bg-gradient-to-b from-[#0c2554] to-[#071A3D] rounded-2xl border-2 border-[#D4AF37] p-6 text-center shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-[#D4AF37] text-lg">✕</button>
+            <div class="mx-auto w-12 h-12 rounded-full bg-[#D4AF37]/10 flex items-center justify-center border border-[#D4AF37]/30 mb-4"><span class="text-xl">🔒</span></div>
+            <h3 class="text-xl font-black text-white tracking-wider">解锁后续精彩剧情</h3>
+            <p class="text-xs text-slate-300 mt-2">悬念即将揭晓！本集为 <span class="text-gold font-bold">VIP 专属内容</span>，升级会员或消耗积分即可立即观看。</p>
+            <div class="my-6 border-t border-[#D4AF37]/20 relative"><span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#0a1e43] px-3 text-[10px] text-slate-400">请选择解锁方式</span></div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                <div onclick="switchPage('vip-page'); closeModal();" class="bg-black/20 border border-[#D4AF37]/40 rounded-xl p-4 flex flex-col justify-between cursor-pointer hover:border-[#D4AF37] transition">
+                    <div>
+                        <span class="text-[9px] bg-[#D4AF37] text-[#071A3D] font-extrabold px-1.5 py-0.5 rounded-full uppercase">🔥 升级 VIP</span>
+                        <p class="text-[10px] text-slate-400 mt-2">成为专属会员，海量高端短剧无限畅看。</p>
+                    </div>
+                    <button class="mt-4 w-full bg-[#D4AF37] text-[#071A3D] text-[11px] font-black py-2 rounded-lg">查看会员方案</button>
+                </div>
+                <div onclick="switchPage('tasks-page'); closeModal();" class="bg-black/20 border border-white/10 rounded-xl p-4 flex flex-col justify-between cursor-pointer hover:border-[#D4AF37] transition">
+                    <div>
+                        <span class="text-[9px] bg-slate-800 text-slate-400 font-extrabold px-1.5 py-0.5 rounded-full uppercase">🎁 免费看</span>
+                        <p class="text-[10px] text-slate-400 mt-2">做拉新、签到任务，轻松赚积分免费看剧。</p>
+                    </div>
+                    <button class="mt-4 w-full border border-[#D4AF37] text-[#D4AF37] text-[11px] font-bold py-2 rounded-lg">去赚积分</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-40 bg-[#071A3D]/90 border-b border-white/10 backdrop-blur-md px-4 md:px-8 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-8">
+            <h1 onclick="switchPage('home-page')" class="text-xl md:text-2xl font-black text-gold tracking-widest cursor-pointer select-none">ROYAL BLUE CLUB</h1>
+            
+            <div class="hidden lg:flex space-x-6 text-xs font-semibold uppercase tracking-wider cursor-pointer">
+                <span id="nav-home" onclick="switchPage('home-page')" class="text-gold border-b-2 border-gold-bright pb-1">首页</span>
+                <span id="nav-vip" onclick="switchPage('vip-page')" class="hover:text-gold transition">VIP会员</span>
+                <span id="nav-tasks" onclick="switchPage('tasks-page')" class="hover:text-gold transition">福利中心</span>
+                <span id="nav-com" onclick="switchPage('com-page')" class="hover:text-gold transition">社区广场</span>
+            </div>
+        </div>
+        <div>
+            <button onclick="switchPage('user-page')" class="bg-gradient-to-r from-[#b8922f] to-[#D4AF37] text-[#071A3D] px-5 py-2 rounded-full text-xs font-black shadow-lg shadow-yellow-600/10">个人中心</button>
+        </div>
+    </nav>
+
+
+    <div id="home-page" class="page-content max-w-[1400px] mx-auto p-4 md:p-8 w-full flex-1 flex flex-col space-y-12">
+        <div class="relative rounded-2xl p-6 md:p-12 border border-[#D4AF37]/20 overflow-hidden bg-gradient-to-r from-[#091f46] via-[#122e61] to-[#071A3D]">
+            <div class="relative z-10 max-w-xl space-y-4">
+                <div class="inline-flex items-center gap-1.5 bg-gold/10 px-2.5 py-1 rounded-full border border-gold/30">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+                    <span class="text-[10px] uppercase tracking-widest text-gold font-bold">Premium Entertainment</span>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">海量热门短剧<br><span class="text-gold">⚡ 每日更新</span></h2>
+                <p class="text-slate-300 text-xs md:text-sm">新用户注册即送尊享俱乐部免费体验特权，全网爽剧一网打尽。</p>
+                <button onclick="goToPlay('地府客服中心', 1)" class="bg-gradient-to-r from-[#b8922f] to-[#D4AF37] text-[#071A3D] font-black px-8 py-3 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-yellow-600/20">立即开启免费爽剧</button>
+            </div>
+            <div class="absolute right-0 bottom-0 opacity-5 text-[8rem] md:text-[14rem] font-black select-none text-gold pointer-events-none transform translate-x-12 translate-y-12">ROYAL</div>
+        </div>
+
+        <section class="space-y-4">
+            <h3 class="text-md font-bold text-white border-b border-white/10 pb-2 uppercase tracking-wider">🔥 今日推荐 (点击海报进入详情播放页)</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div onclick="goToPlay('地府客服中心', 1)" class="group cursor-pointer glass-card p-2 rounded-xl transition">
+                    <div class="aspect-[3/4] bg-[#0c2554] rounded-lg mb-2 flex items-center justify-center text-slate-500 relative overflow-hidden">
+                        <span class="text-xs">海报：地府客服中心</span>
+                        <span class="absolute top-2 left-2 bg-[#071A3D]/90 text-gold text-[9px] px-1.5 py-0.5 rounded font-black border border-gold/30">★ 9.8</span>
+                    </div>
+                    <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">地府客服中心</h4>
+                    <div class="flex justify-between items-center mt-1 text-[10px] text-slate-400"><span>80集全</span><span>42.1万播放</span></div>
+                </div>
+                <div onclick="goToPlay('家门口过招', 1)" class="group cursor-pointer glass-card p-2 rounded-xl transition">
+                    <div class="aspect-[3/4] bg-[#0c2554] rounded-lg mb-2 flex items-center justify-center text-slate-500 relative overflow-hidden">
+                        <span class="text-xs">海报：家门口过招</span>
+                        <span class="absolute top-2 left-2 bg-[#071A3D]/90 text-gold text-[9px] px-1.5 py-0.5 rounded font-black border border-gold/30">★ 9.5</span>
+                    </div>
+                    <h4 class="text-white text-xs font-bold truncate group-hover:text-gold transition">家门口过招</h4>
+                    <div class="flex justify-between items-center mt-1 text-[10px] text-slate-400"><span>65集全</span><span>31.5万播放</span></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div id="play-page" class="page-content max-w-[1400px] mx-auto p-4 md:p-8 w-full flex-1 flex flex-col space-y-6 hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 space-y-4">
+                <div id="video-player-container" class="w-full aspect-video bg-black rounded-2xl border border-white/10 flex flex-col items-center justify-center relative overflow-hidden shadow-2xl">
+                    <div id="player-state-free" class="absolute inset-0 bg-[#061430] flex flex-col items-center justify-center text-center p-4">
+                        <span class="text-4xl text-gold animate-bounce">▶</span>
+                        <p class="text-xs text-slate-300 mt-3">正在解码播放：<span id="current-playing-title" class="text-gold font-bold"></span></p>
+                        <p class="text-[10px] text-slate-500 mt-1">本地沙盒环境已开启高性能流媒体硬件加速</p>
+                    </div>
+                    <div id="player-state-locked" class="absolute inset-0 bg-black/95 flex flex-col items-center justify-center text-center p-4 hidden">
+                        <span class="text-3xl text-gold">🔒</span>
+                        <p class="text-sm font-black text-white mt-3">该剧集需要解锁后才能继续观看</p>
+                        <p class="text-xs text-slate-400 mt-1">成为 VIP 会员或使用社区积分秒速解锁本集</p>
+                        <button onclick="openModal()" class="mt-4 bg-gradient-to-r from-[#b8922f] to-[#D4AF37] text-[#071A3D] font-black text-xs px-6 py-2.5 rounded-xl shadow-lg">立即解锁剧集</button>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <h2 id="detail-movie-title" class="text-xl font-black text-white">剧集名称加载中...</h2>
+                    <p class="text-xs text-slate-400 mt-1">分类标签：都市神剧 | 战神逆袭 | 大马热播榜首</p>
+                    <p class="text-xs text-slate-300 mt-4 leading-relaxed border-t border-white/5 pt-4">
+                        简介：本剧讲述主角意外卷入豪门风云，在顶级皇家俱乐部的暗中支持下，凭借惊人智慧一步步完成绝地反击、重回巅峰的爽快故事。
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-card p-4 rounded-2xl flex flex-col h-[450px] lg:h-auto">
+                <div class="border-b border-white/10 pb-3 mb-3">
+                    <h3 class="text-xs font-black uppercase tracking-widest text-gold">📋 选集中心 (1-20集)</h3>
+                    <p class="text-[10px] text-slate-400 mt-1">前 5 集免费试看，第 6 集起需要 VIP 鉴权</p>
+                </div>
+                <div class="grid grid-cols-4 gap-2 overflow-y-auto flex-1 pr-1" id="episode-grid"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="vip-page" class="page-content max-w-[1400px] mx-auto p-4 md:p-8 w-full flex-1 flex flex-col space-y-8 hidden">
+        <div class="text-center space-y-2">
+            <h2 class="text-2xl font-black text-gold uppercase tracking-widest">👑 尊享皇家俱乐部 VIP 会员</h2>
+            <p class="text-slate-400 text-xs">开通特权，即刻解锁全站所有高端热播剧集，告别等待与广告</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto w-full">
+            <div class="bg-gradient-to-b from-[#0c2554] to-[#071A3D] border-2 border-gold-bright rounded-2xl p-6 relative shadow-2xl flex flex-col justify-between">
+                <span class="absolute top-0 right-0 bg-gold text-[#071A3D] text-[9px] font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider">🔥 最受欢迎</span>
+                <div>
+                    <h4 class="text-white font-bold text-lg">季度 超级 VIP 尊享卡</h4>
+                    <div class="text-3xl font-black text-gold my-4">RM 69 <span class="text-xs font-normal text-slate-500">/ 90天</span></div>
+                    <ul class="text-xs text-slate-300 space-y-2 border-t border-white/10 pt-4">
+                        <li>✔ 专享极速独立服务器通道，超清不卡顿</li>
+                        <li>✔ 享有隐藏隐藏剧集优先抢先看特权</li>
+                        <li>✔ 支持手机、平板多设备同时在线</li>
+                    </ul>
+                </div>
+                <button class="w-full mt-6 bg-gold text-[#071A3D] font-black py-3 rounded-xl text-xs uppercase tracking-widest shadow-lg shadow-yellow-600/20">立即安全支付开通</button>
+            </div>
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
+                <div>
+                    <h4 class="text-white font-bold text-lg">月度 体验 VIP 门票</h4>
+                    <div class="text-3xl font-black text-gold my-4">RM 29 <span class="text-xs font-normal text-slate-500">/ 30天</span></div>
+                    <ul class="text-xs text-slate-300 space-y-2 border-t border-white/10 pt-4">
+                        <li>✔ 全站短剧无限制畅看，无广告干扰</li>
+                        <li>✔ 解锁1080P原生高清追剧体验</li>
+                    </ul>
+                </div>
+                <button class="w-full mt-6 border border-gold text-gold font-bold py-3 rounded-xl text-xs uppercase tracking-widest hover:bg-gold hover:text-[#071A3D] transition">开通月卡</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="tasks-page" class="page-content max-w-[1400px] mx-auto p-4 md:p-8 w-full flex-1 flex flex-col space-y-8 hidden">
+        <div class="text-center space-y-2">
+            <h2 class="text-2xl font-black text-white">🎁 零元看剧 · 福利任务中心</h2>
+            <p class="text-slate-400 text-xs">不想充值？手指点一点完成以下任务，免费白嫖巨额积分兑换 VIP 剧集</p>
+            <div class="inline-block bg-black/40 border border-gold/20 px-6 py-1.5 rounded-full text-xs font-bold">
+                我的当前积分余额：<span id="user-points" class="text-gold">45</span> Pt
+            </div>
+        </div>
+
+        <div class="max-w-xl mx-auto w-full space-y-3">
+            <div class="glass-card p-4 rounded-xl flex justify-between items-center">
+                <div>
+                    <h4 class="text-white text-xs font-bold">🌞 每日登录社区签到</h4>
+                    <p class="text-slate-400 text-[11px]">每日签到直接赠送 5 积分（可看半集短剧）</p>
+                </div>
+                <button onclick="addPoints(5, '日签到成功！社区积分已实时到账 +5')" class="bg-gold text-[#071A3D] font-black text-[11px] px-4 py-2 rounded-lg shadow-md">每日签到</button>
+            </div>
+            <div class="glass-card p-4 rounded-xl flex justify-between items-center">
+                <div>
+                    <h4 class="text-white text-xs font-bold">🔗 复制社区专属裂变链接</h4>
+                    <p class="text-slate-400 text-[11px]">每成功邀请 1 位新老乡，送 50 积分 + 1天免费VIP</p>
+                </div>
+                <button onclick="alert('专属裂变推广链接已复制！快去发送到 Telegram 或 WhatsApp 群里吧！')" class="border border-gold text-gold font-bold text-[11px] px-4 py-2 rounded-lg">复制链接</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="com-page" class="page-content max-w-[1400px] mx-auto p-4 md:p-8 w-full flex-1 flex flex-col space-y-6 hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <div class="lg:col-span-1 glass-card p-5 rounded-2xl space-y-4 h-fit">
+                <h3 class="text-xs font-bold text-gold uppercase tracking-widest border-l-2 border-gold pl-2">✍ 发起剧评交流</h3>
+                <textarea id="post-input" rows="4" class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:border-gold outline-none resize-none" placeholder="在这里写下你对最新一集的惊人看法..."></textarea>
+                <button onclick="submitPost()" class="w-full bg-gradient-to-r from-[#b8922f] to-[#D4AF37] text-[#071A3D] font-black py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-md">发布剧评动态</button>
+            </div>
+            <div class="lg:col-span-3 space-y-4">
+                <h3 class="text-sm font-bold text-white border-b border-white/5 pb-2">💬 皇家影迷热议广角</h3>
+                <div id="post-wall" class="space-y-3">
+                    <div class="glass-card p-4 rounded-xl space-y-2">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-gold font-bold">吉隆坡追剧狂魔 👑</span>
+                            <span class="text-slate-500 text-[10px]">2分钟前</span>
+                        </div>
+                        <p class="text-white text-xs leading-relaxed">刚刚在详情页一口气看完《地府客服中心》前5集，太搞笑了！第6集突然卡主弹出拦截的时候，我直接开个季度卡支持了，画质确实顶！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="user-page" class="page-content max-w-[1400px] mx-auto p-4 md:p-8 w-full flex-1 flex flex-col items-center justify-center hidden">
+        <div class="max-w-md w-full glass-card rounded-2xl p-6 text-center space-y-6 shadow-2xl">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-gold to-yellow-600 mx-auto flex items-center justify-center border-4 border-[#071A3D] shadow-xl">
+                <span class="text-3xl">🤵</span>
+            </div>
+            <div>
+                <h3 class="text-lg font-black text-white tracking-wide">尊贵皇家会员_0894</h3>
+                <p class="text-[10px] text-gold uppercase tracking-widest font-bold mt-1">💎 会员特权组: 钻石尊享级俱乐部</p>
+            </div>
+            <div class="grid grid-cols-2 gap-2 border-t border-b border-white/5 py-4 text-left text-xs text-slate-300">
+                <div>节点状态: <span class="text-green-400 font-bold">加密安全连接</span></div>
+                <div>当前总积分: <span class="text-gold font-bold id-point-placeholder">45</span> Pt</div>
+            </div>
+            <div class="space-y-3">
+                <p class="text-[11px] text-slate-400 text-center leading-relaxed">为了获得更稳定的抗封锁、防加载延迟、无网络断流的高阶追剧体验，推荐立刻安装独立移动端：</p>
+                <button onclick="alert('正在调起平板安全沙盒，高防加密 Android APK 客户端包正在准备下载...')" class="w-full bg-gradient-to-r from-[#b8922f] to-[#D4AF37] text-[#071A3D] font-black py-3 rounded-xl text-xs uppercase tracking-widest shadow-md">📲 Android APK 官方独立包下载</button>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="bg-[#041129] border-t border-white/5 mt-12 py-6 text-center text-xs text-slate-500">
+        <p>Copyright © 2026 Royal Blue Club. All Rights Reserved.</p>
+    </footer>
+
+
+    <script>
+        let currentPoints = 45; // 全局积分寄存器
+
+        // 1. 无缝多页瞬时切换引擎
+        function switchPage(pageId) {
+            // 隐藏全站所有页面房间
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+            // 闪现目标页面
+            document.getElementById(pageId).classList.remove('hidden');
+
+            // 初始化所有顶部导航的高亮状态
+            const navs = ['nav-home', 'nav-vip', 'nav-tasks', 'nav-com'];
+            navs.forEach(n => { if(document.getElementById(n)) document.getElementById(n).className = "hover:text-gold transition"; });
+
+            // 精确激活当前点击页面的高亮下划线
+            if(pageId === 'home-page' && document.getElementById('nav-home')) document.getElementById('nav-home').className = "text-gold border-b-2 border-gold-bright pb-1";
+            if(pageId === 'vip-page' && document.getElementById('nav-vip')) document.getElementById('nav-vip').className = "text-gold border-b-2 border-gold-bright pb-1";
+            if(pageId === 'tasks-page' && document.getElementById('nav-tasks')) document.getElementById('nav-tasks').className = "text-gold border-b-2 border-gold-bright pb-1";
+            if(pageId === 'com-page' && document.getElementById('nav-com')) document.getElementById('nav-com').className = "text-gold border-b-2 border-gold-bright pb-1";
+
+            // 视图重置回天顶
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 2. 进入播放详情页并根据权限规则动态渲染 20 集矩阵
+        function goToPlay(movieTitle, targetEpisode) {
+            switchPage('play-page');
+            document.getElementById('detail-movie-title').innerText = movieTitle;
+            
+            const grid = document.getElementById('episode-grid');
+            grid.innerHTML = ''; // 清刷历史集数
+
+            for (let i = 1; i <= 20; i++) {
+                const btn = document.createElement('button');
+                btn.className = "ep-btn py-3 rounded-xl text-xs font-bold relative flex items-center justify-center";
+                
+                if (i <= 5) {
+                    // 前5集设定免费
+                    btn.innerHTML = `${i} <span class="absolute top-0 right-0 text-[8px] bg-green-600 text-white px-1 rounded-bl-md rounded-tr-xl">免费</span>`;
+                    btn.onclick = () => runAuthCheck(movieTitle, i, true);
+                } else {
+                    // 第6集起加锁拦截
+                    btn.innerHTML = `${i} <span class="absolute top-0 right-0 text-[8px] bg-amber-600 text-white px-1 rounded-bl-md rounded-tr-xl">🔒</span>`;
+                    btn.onclick = () => runAuthCheck(movieTitle, i, false);
+                }
+                grid.appendChild(btn);
+            }
+            // 默认加载选定的目标集数
+            runAuthCheck(movieTitle, targetEpisode, targetEpisode <= 5);
+        }
+
+        // 3. 核心业务网关：播放鉴权拦截器
+        function runAuthCheck(title, num, isFree) {
+            document.getElementById('current-playing-title').innerText = `${title} - 第 ${num} 集`;
+            if (isFree) {
+                // 有权限直接看
+                document.getElementById('player-state-free').classList.remove('hidden');
+                document.getElementById('player-state-locked').classList.add('hidden');
+            } else {
+                // 鉴权挂起，播放器黑屏报错，同步无缝强拉黑金弹窗
+                document.getElementById('player-state-free').classList.add('hidden');
+                document.getElementById('player-state-locked').classList.remove('hidden');
+                openModal();
+            }
+        }
+
+        // 4. 实时剧评发布机制（演示用纯前端交互）
+        function submitPost() {
+            const input = document.getElementById('post-input');
+            if(!input.value.trim()) return alert('老板，先写点看法再发布吧！');
+            
+            const wall = document.getElementById('post-wall');
+            const newPost = document.createElement('div');
+            newPost.className = "glass-card p-4 rounded-xl space-y-2";
+            newPost.innerHTML = `
+                <div class="flex justify-between items-center text-xs">
+                    <span class="text-gold font-bold">尊贵皇家会员_0894 💎</span>
+                    <span class="text-slate-500 text-[10px]">刚刚</span>
+                </div>
+                <p class="text-white text-xs leading-relaxed">${input.value}</p>
+            `;
+            // 将新帖子推到动态最顶部
+            wall.insertBefore(newPost, wall.firstChild);
+            input.value = '';
+        }
+
+        // 5. 全站实时同步增分器
+        function addPoints(amt, msg) {
+            currentPoints += amt;
+            document.getElementById('user-points').innerText = currentPoints;
+            document.querySelectorAll('.id-point-placeholder').forEach(el => el.innerText = currentPoints);
+            alert(msg);
+        }
+
+        // 弹窗辅助
+        function openModal() { document.getElementById('conversion-modal').classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('conversion-modal').classList.add('hidden'); document.body.style.overflow = ''; }
+    </script>
 </body>
 </html>
+
                     </div>
                 </div>
             </div>
